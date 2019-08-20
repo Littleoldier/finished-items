@@ -9607,7 +9607,8 @@ namespace WindowsForms_print
                 G_zhidan = this.CB_ZhiDan.Text;
             }
 
-            MOPB.UpdateCH_TemplatePath1DAL(G_zhidan, this.Select_Template1.Text, this.Select_Template2.Text);
+            //MOPB.UpdateCH_TemplatePath1DAL(G_zhidan, this.Select_Template1.Text, this.Select_Template2.Text);
+            MOPB.UpdateCH_TemplatePath1DAL(this.CB_ZhiDan.Text, this.Select_Template1.Text, this.Select_Template2.Text);
 
             Form1.recordLuck = 1;
             Form1.recordUpdateUI = 1;
