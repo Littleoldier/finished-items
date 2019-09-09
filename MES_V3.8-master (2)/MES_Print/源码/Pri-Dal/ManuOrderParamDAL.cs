@@ -143,7 +143,7 @@ namespace ManuOrder.Param.DAL
                     command.CommandText = "SELECT       " +
                           "SoftModel,     SN1 ,       SN2 ,         SN3 ,        BoxNo1 ,          BoxNo2 ,           ProductDate,      Color ,       Weight ,       Qty ,         ProductNo ,   Version ,     IMEIStart ,   IMEIEnd ,    SIMStart , SIMEnd ,   BATStart ,  BATEnd ,    VIPStart ,   VIPEnd ," +
                           "IMEIRel ,      Remark1,    Remark5 ,     status ,     JST_template ,     CHT_template1 ,     CHT_template2 , BAT_prefix ,  BAT_digits ,   SIM_prefix ,  SIM_digits ,  VIP_prefix,   VIP_digits ,  ICCID_prefix ," +
-                          "ICCID_digits , IMEIPrints, MAC_prefix ,  MAC_digits , Equipment_prefix , Equipment_digits ,  IMEI2Start ,    IMEI2End,     IMEI2Prints    FROM  dbo.Gps_ManuOrderParam WHERE ZhiDan='" + ZhidanNum + "'";
+                          "ICCID_digits , IMEIPrints, MAC_prefix ,  MAC_digits , Equipment_prefix , Equipment_digits ,  IMEI2Start ,    IMEI2End,     IMEI2Prints    FROM  dbo.Gps_ManuOrderParam WHERE ZhiDan='" + ZhidanNum + "' AND(Status = 0 or Status = 1 or Status = 2)";
                     SqlDataReader dr = command.ExecuteReader();
 
                     list.claer();
@@ -220,7 +220,7 @@ namespace ManuOrder.Param.DAL
                 command.CommandText = "SELECT "+
                      "SoftModel ,    SN1 ,           SN2 ,          SN3 ,        BoxNo1 ,      BoxNo2 ,       ProductDate ,      Color ,            Weight ,       Qty ,           ProductNo ,    Version ,      IMEIStart ,   IMEIEnd ,      SIMStart ,      SIMEnd ,  "+
                     " BATStart ,     BATEnd ,        VIPStart ,     VIPEnd ,     IMEIRel ,     Remark1 ,      Remark5 ,          status ,           JST_template , CHT_template1 , CHT_template2,  BAT_prefix ,   BAT_digits ,  SIM_prefix ,  SIM_digits ,    VIP_prefix , " +
-                    " VIP_digits ,   ICCID_prefix ,  ICCID_digits , IMEIPrints ,   MAC_prefix , MAC_digits ,  Equipment_prefix , Equipment_digits , RFID_Start ,     RFID_End ,      RFID_prefix ,   RFID_digits     FROM dbo.Gps_ManuOrderParam WHERE ZhiDan='" + ZhidanNum + "'";
+                    " VIP_digits ,   ICCID_prefix ,  ICCID_digits , IMEIPrints ,   MAC_prefix , MAC_digits ,  Equipment_prefix , Equipment_digits , RFID_Start ,     RFID_End ,      RFID_prefix ,   RFID_digits     FROM dbo.Gps_ManuOrderParam WHERE ZhiDan='" + ZhidanNum + "'AND  (Status = 0 or Status =1 or Status = 2)";
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {

@@ -197,6 +197,7 @@ namespace WindowsForms_print
             {
                 Printer1.Items.Add(sPrint);
             }
+            G_MOP.Clear();
             G_MOP = MOPB.SelectZhidanNumBLL();
             foreach (Gps_ManuOrderParam a in G_MOP)
             {
@@ -245,6 +246,8 @@ namespace WindowsForms_print
             string NowData = System.DateTime.Now.ToString("yyyy.MM.dd");
             this.PrintDate.Text = NowData;
             string ZhidanNum = this.CB_ZhiDan.Text;
+
+            //获取状态0、1、2制单数据
             Gps_ManuOrderParam b = MOPB.selectManuOrderParamByzhidanBLL(ZhidanNum,0);
 
             s = b.SN2.Length;
@@ -650,14 +653,14 @@ namespace WindowsForms_print
 
         private void PrintDate_Leave(object sender, EventArgs e)
         {
-            if (this.PrintDate.Text != "")
-            {
-                 if (!IsDate(this.PrintDate.Text))
-                {
-                    MessageBox.Show("请输入正确的日期格式");
-                    this.PrintDate.Text = System.DateTime.Now.ToString("yyyy.MM.dd");
-                }
-            }
+            //if (this.PrintDate.Text != "")
+            //{
+            //     if (!IsDate(this.PrintDate.Text))
+            //    {
+            //        MessageBox.Show("请输入正确的日期格式");
+            //        this.PrintDate.Text = System.DateTime.Now.ToString("yyyy.MM.dd");
+            //    }
+            //}
         }
 
         public static bool HasChinese(string str)
@@ -2114,7 +2117,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -2132,7 +2135,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                                 if (this.updata_inline.Visible == true)
@@ -3341,6 +3344,11 @@ namespace WindowsForms_print
                                     this.RFIDStart.Clear();
                                     this.GLB_IMEI14.Clear();
                                     this.IMEI_Start.Focus();
+                                    if (this.updata_inline.Visible == true)
+                                    {
+                                        MOPB.UpdateStatusByZhiDanBLL(this.CB_ZhiDan.Text);
+                                        statusChange();
+                                    }
 
                                 }
                             }
@@ -3817,6 +3825,11 @@ namespace WindowsForms_print
                                     this.GLB_IMEI14.Clear();
                                     this.IMEI_Start.Focus();
 
+                                    if (this.updata_inline.Visible == true)
+                                    {
+                                        MOPB.UpdateStatusByZhiDanBLL(this.CB_ZhiDan.Text);
+                                        statusChange();
+                                    }
                                 }
                             }
                             else
@@ -4179,7 +4192,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -4200,7 +4213,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -5389,7 +5402,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -5411,7 +5424,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -6100,7 +6113,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -6123,7 +6136,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -6816,7 +6829,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -6840,7 +6853,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -7535,7 +7548,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -7560,7 +7573,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -8261,7 +8274,7 @@ namespace WindowsForms_print
                                             this.RFIDStart.Clear();
                                             this.GLB_IMEI14.Clear();
                                             this.IMEI_Start.Focus();
-                                            return;
+                                            //return;
                                         }
                                     }
                                     else
@@ -8287,7 +8300,7 @@ namespace WindowsForms_print
                                         this.RFIDStart.Clear();
                                         this.GLB_IMEI14.Clear();
                                         this.IMEI_Start.Focus();
-                                        return;
+                                        //return;
                                     }
                                 }
                             }
@@ -8646,6 +8659,7 @@ namespace WindowsForms_print
         private void Refresh_Click(object sender, EventArgs e)
         {
             this.CB_ZhiDan.Items.Clear();
+            G_MOP.Clear();
             G_MOP = MOPB.SelectZhidanNumBLL();
             foreach (Gps_ManuOrderParam a in G_MOP)
             {
@@ -9546,6 +9560,9 @@ namespace WindowsForms_print
             this.SiginIN.Enabled = false;
             this.QuitBt.Enabled = false;
 
+            //this.PrintDate.Enabled = false;
+
+            
 
             BindingCountF = 0;
             BindingCountS = 0;
@@ -9810,6 +9827,8 @@ namespace WindowsForms_print
             this.SiginIN.Enabled = true;
             this.QuitBt.Enabled = true;
 
+            //this.PrintDate.Enabled = true;
+
             MissingSql = "";
             AssociatedFields.Clear();
 
@@ -9881,6 +9900,7 @@ namespace WindowsForms_print
         {
             //刷新制单
             this.CB_ZhiDan.Items.Clear();
+            G_MOP.Clear();
             G_MOP = MOPB.SelectZhidanNumBLL();
             foreach (Gps_ManuOrderParam a in G_MOP)
             {

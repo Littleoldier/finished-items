@@ -240,6 +240,7 @@ namespace WindowsForms_print
             {
                 Printer1.Items.Add(sPrint);
             }
+            G_MOP.Clear();
             G_MOP = MOPB.SelectZhidanNumBLL();
             foreach (Gps_ManuOrderParam a in G_MOP)
             {
@@ -258,6 +259,7 @@ namespace WindowsForms_print
         public void refrezhidan()
         {
             this.CB_ZhiDan.Items.Clear();
+            G_MOP.Clear();
             G_MOP = MOPB.SelectZhidanNumBLL();
             foreach (Gps_ManuOrderParam a in G_MOP)
             {
@@ -1348,6 +1350,11 @@ namespace WindowsForms_print
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                             imei_begin++;
                                         }
+                                        else
+                                        {
+                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15+"插入失败\r\n");
+                                            imei_begin++;
+                                        }
                                     }
                                     if (MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, sn_aft, begin0 + (imei_begin - 1).ToString()))
                                     {
@@ -1396,7 +1403,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     btFormat.SubStrings["IMEI"].Value = begin0 + imei_begin.ToString() + imei15;
@@ -1433,6 +1440,11 @@ namespace WindowsForms_print
                                                         imei_begin++;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
+                                                        imei_begin++;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -1457,7 +1469,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     btFormat.SubStrings["IMEI"].Value = begin0 + imei_begin.ToString() + imei15;
@@ -1493,6 +1505,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                         imei_begin++;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
+                                                        imei_begin++;
                                                     }
                                                 }
                                                 else
@@ -1544,6 +1561,11 @@ namespace WindowsForms_print
                                             {
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
+                                                imei_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
                                                 imei_begin++;
                                             }
                                         }
@@ -1595,7 +1617,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     btFormat.SubStrings["IMEI"].Value = begin0 + imei_begin.ToString() + imei15;
@@ -1634,6 +1656,11 @@ namespace WindowsForms_print
                                                             imei_begin++;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
+                                                            imei_begin++;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -1665,7 +1692,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == 1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     btFormat.SubStrings["IMEI"].Value = begin0 + imei_begin.ToString() + imei15;
@@ -1703,6 +1730,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                             imei_begin++;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
+                                                            imei_begin++;
                                                         }
                                                     }
                                                     else
@@ -1763,6 +1795,11 @@ namespace WindowsForms_print
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                 imei_begin++;
                                             }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "插入失败\r\n");
+                                                imei_begin++;
+                                            }
                                         }
                                         if (MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, "", begin0 + (imei_begin - 1).ToString()))
                                         {
@@ -1809,7 +1846,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["SN"].Value = sn_bef + sn_aft;
@@ -1845,6 +1882,11 @@ namespace WindowsForms_print
                                                         imei_begin++;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin++;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -1869,7 +1911,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["SN"].Value = SNHexNum;
@@ -1904,6 +1946,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                         imei_begin++;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin++;
                                                     }
                                                 }
                                                 else
@@ -1956,6 +2003,11 @@ namespace WindowsForms_print
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                 imei_begin++;
                                             }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                imei_begin++;
+                                            }
                                         }
                                         if (MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, "", imei_begin_pre + (imei_begin - 1).ToString().PadLeft(5, '0')))
                                         {
@@ -2001,7 +2053,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     if (!PMB.CheckSNBLL(sn_bef + sn_aft))
@@ -2039,6 +2091,11 @@ namespace WindowsForms_print
                                                             imei_begin++;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin++;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -2070,7 +2127,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     if (!PMB.CheckSNBLL(SNHexNum))
@@ -2107,6 +2164,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                             imei_begin++;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin++;
                                                         }
                                                     }
                                                     else
@@ -2164,6 +2226,11 @@ namespace WindowsForms_print
                                             {
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                                 imei_begin++;
                                             }
                                         }
@@ -2234,6 +2301,11 @@ namespace WindowsForms_print
                                         {
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin++;
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                             imei_begin++;
                                         }
                                     }
@@ -2498,6 +2570,12 @@ namespace WindowsForms_print
                                             imei_begin++;
                                             imei2_begin++;
                                         }
+                                        else
+                                        {
+                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与"+ begin2 + imei2_begin.ToString() + imei2_15+"插入失败\r\n");
+                                            imei_begin++;
+                                            imei2_begin++;
+                                        }
                                     }
                                     if (MOPB.UpdateIMEI2SNnumberBLL(this.CB_ZhiDan.Text, sn_aft, begin0 + (imei_begin - 1).ToString(), begin2 + (imei2_begin - 1).ToString()))
                                     {
@@ -2576,7 +2654,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     imei2_15 = getimei15(begin2 + imei2_begin.ToString());
@@ -2629,6 +2707,12 @@ namespace WindowsForms_print
                                                         imei2_begin++;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                        imei_begin++;
+                                                        imei2_begin++;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -2654,7 +2738,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     imei2_15 = getimei15(begin2 + imei2_begin.ToString());
@@ -2705,6 +2789,12 @@ namespace WindowsForms_print
                                                         imei_begin++;
                                                         imei2_begin++;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                        imei_begin++;
+                                                        imei2_begin++;
                                                     }
                                                 }
                                                 else
@@ -2771,6 +2861,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
+                                                imei_begin++;
+                                                imei2_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
                                                 imei_begin++;
                                                 imei2_begin++;
                                             }
@@ -2866,7 +2962,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     imei2_15 = getimei15(begin2 + imei2_begin.ToString());
@@ -2920,6 +3016,12 @@ namespace WindowsForms_print
                                                             imei2_begin++;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                            imei_begin++;
+                                                            imei2_begin++;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -2952,7 +3054,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
                                                     imei2_15 = getimei15(begin2 + imei2_begin.ToString());
@@ -3005,6 +3107,12 @@ namespace WindowsForms_print
                                                             imei_begin++;
                                                             imei2_begin++;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                            imei_begin++;
+                                                            imei2_begin++;
                                                         }
                                                     }
                                                     else
@@ -3078,6 +3186,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
+                                                imei_begin++;
+                                                imei2_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin2 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
                                                 imei_begin++;
                                                 imei2_begin++;
                                             }
@@ -3156,7 +3270,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0');
@@ -3206,6 +3320,12 @@ namespace WindowsForms_print
                                                         imei2_begin++;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin++;
+                                                        imei2_begin++;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -3231,7 +3351,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0');
@@ -3280,6 +3400,12 @@ namespace WindowsForms_print
                                                         imei_begin++;
                                                         imei2_begin++;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin++;
+                                                        imei2_begin++;
                                                     }
                                                 }
                                                 else
@@ -3344,6 +3470,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin++;
+                                                imei2_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                                 imei_begin++;
                                                 imei2_begin++;
                                             }
@@ -3427,7 +3559,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0');
@@ -3479,6 +3611,12 @@ namespace WindowsForms_print
                                                             imei2_begin++;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin++;
+                                                            imei2_begin++;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -3511,7 +3649,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0');
@@ -3562,6 +3700,12 @@ namespace WindowsForms_print
                                                             imei_begin++;
                                                             imei2_begin++;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin++;
+                                                            imei2_begin++;
                                                         }
                                                     }
                                                     else
@@ -3633,6 +3777,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin++;
+                                                imei2_begin++;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                                 imei_begin++;
                                                 imei2_begin++;
                                             }
@@ -3743,6 +3893,12 @@ namespace WindowsForms_print
 
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin++;
+                                            imei2_begin++;
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei2_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                             imei_begin++;
                                             imei2_begin++;
                                         }
@@ -4003,6 +4159,11 @@ namespace WindowsForms_print
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                             imei_begin = imei_begin+2;
                                         }
+                                        else
+                                        {
+                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15+"与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                            imei_begin = imei_begin + 2;
+                                        }
                                     }
                                     if (MOPB.UpdateIMEI2SNnumberBLL(this.CB_ZhiDan.Text, sn_aft, begin0 + (imei_begin - 2).ToString(), begin0 + imei2_begin .ToString()))
                                     {
@@ -4077,7 +4238,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
@@ -4130,6 +4291,11 @@ namespace WindowsForms_print
                                                         imei_begin = imei_begin + 2;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                        imei_begin = imei_begin + 2;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -4155,7 +4321,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
@@ -4206,6 +4372,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                         imei_begin = imei_begin + 2;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                        imei_begin = imei_begin + 2;
                                                     }
                                                 }
                                                 else
@@ -4275,6 +4446,11 @@ namespace WindowsForms_print
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                 imei_begin = imei_begin + 2;
 
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                imei_begin = imei_begin + 2;
                                             }
                                         }
                                         if (MOPB.UpdateIMEI2SNnumberBLL(this.CB_ZhiDan.Text, "", begin0 + (imei_begin - 2).ToString(), begin0 + imei2_begin.ToString()))
@@ -4354,7 +4530,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
@@ -4408,6 +4584,11 @@ namespace WindowsForms_print
                                                             imei_begin = imei_begin + 2;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                            imei_begin = imei_begin + 2;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -4440,7 +4621,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     imei15 = getimei15(begin0 + imei_begin.ToString());
@@ -4494,6 +4675,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                             imei_begin = imei_begin + 2;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                            imei_begin = imei_begin + 2;
                                                         }
                                                     }
                                                     else
@@ -4570,6 +4756,11 @@ namespace WindowsForms_print
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + imei15 + "的制单", null);
                                                 imei_begin = imei_begin + 2;
                                             }
+                                            else
+                                            {
+                                                this.reminder.AppendText(begin0 + imei_begin.ToString() + imei15 + "与" + begin0 + imei2_begin.ToString() + imei2_15 + "插入失败\r\n");
+                                                imei_begin = imei_begin + 2;
+                                            }
                                         }
                                         if (MOPB.UpdateIMEI2SNnumberBLL(this.CB_ZhiDan.Text, "", begin0 + (imei_begin - 2).ToString(), begin0 + imei2_begin.ToString()))
                                         {
@@ -4631,7 +4822,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
@@ -4681,6 +4872,11 @@ namespace WindowsForms_print
                                                         imei_begin = imei_begin + 2;
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin = imei_begin + 2;
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -4706,7 +4902,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
@@ -4755,6 +4951,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                         imei_begin = imei_begin + 2;
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                        imei_begin = imei_begin + 2;
                                                     }
                                                 }
                                                 else
@@ -4820,6 +5021,11 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = imei_begin + 2;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                                 imei_begin = imei_begin + 2;
                                             }
                                         }
@@ -4899,7 +5105,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
@@ -4951,6 +5157,11 @@ namespace WindowsForms_print
                                                             imei_begin = imei_begin + 2;
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin = imei_begin + 2;
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -4983,7 +5194,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.PrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = imei_begin + 1;
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin_pre + imei_begin.ToString().PadLeft(5, '0');
@@ -5034,6 +5245,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                             imei_begin = imei_begin + 2;
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
+                                                            imei_begin = imei_begin + 2;
                                                         }
                                                     }
                                                     else
@@ -5106,6 +5322,11 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = imei_begin + 2;
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                                 imei_begin = imei_begin + 2;
                                             }
                                         }
@@ -5206,6 +5427,11 @@ namespace WindowsForms_print
 
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin = imei_begin + 2;
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin_pre + imei_begin.ToString().PadLeft(5, '0') + "与" + imei_begin_pre + imei2_begin.ToString().PadLeft(5, '0') + "插入失败\r\n");
                                             imei_begin = imei_begin + 2;
                                         }
                                     }
@@ -5353,7 +5579,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["SN"].Value = sn_bef + sn_aft;
@@ -5389,6 +5615,11 @@ namespace WindowsForms_print
                                                         imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -5413,7 +5644,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1|| SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["SN"].Value = SNHexNum;
@@ -5448,6 +5679,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                         imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                     }
                                                 }
                                                 else
@@ -5500,6 +5736,11 @@ namespace WindowsForms_print
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                 imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                             }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin + "插入失败\r\n");
+                                                imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                            }
                                         }
                                         if (MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, "", (Convert.ToInt64(imei_begin, 16) - Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0')))
                                         {
@@ -5543,7 +5784,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     if (!PMB.CheckSNBLL(sn_bef + sn_aft))
@@ -5581,6 +5822,11 @@ namespace WindowsForms_print
                                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -5613,7 +5859,7 @@ namespace WindowsForms_print
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
 
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     if (!PMB.CheckSNBLL(SNHexNum))
@@ -5650,6 +5896,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         }
                                                     }
                                                     else
@@ -5707,6 +5958,11 @@ namespace WindowsForms_print
                                             {
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin + "插入失败\r\n");
                                                 imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                             }
                                         }
@@ -5776,6 +6032,11 @@ namespace WindowsForms_print
                                         {
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin + "插入失败\r\n");
                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                         }
                                     }
@@ -5938,7 +6199,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin;
@@ -5988,6 +6249,12 @@ namespace WindowsForms_print
                                                         imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "与"+ imei2_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                        imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -6013,7 +6280,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin;
@@ -6062,6 +6329,12 @@ namespace WindowsForms_print
                                                         imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                        imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                     }
                                                 }
                                                 else
@@ -6126,6 +6399,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
                                                 imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                 imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                             }
@@ -6197,7 +6476,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin;
@@ -6249,6 +6528,12 @@ namespace WindowsForms_print
                                                             imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                            imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -6281,7 +6566,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
                                                     btFormat.SubStrings["IMEI2"].Value = imei2_begin;
@@ -6332,6 +6617,12 @@ namespace WindowsForms_print
                                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                             imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                            imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                         }
                                                     }
                                                     else
@@ -6403,6 +6694,12 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
                                                 imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                 imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                             }
@@ -6511,6 +6808,12 @@ namespace WindowsForms_print
 
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                            imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                             imei2_begin = (Convert.ToInt64(imei2_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                         }
@@ -6694,7 +6997,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin =  (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
@@ -6744,6 +7047,11 @@ namespace WindowsForms_print
                                                         imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                     }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -6769,7 +7077,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
@@ -6818,6 +7126,11 @@ namespace WindowsForms_print
                                                         //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                         imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    }
+                                                    else
+                                                    {
+                                                        this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                        imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                     }
                                                 }
                                                 else
@@ -6884,6 +7197,11 @@ namespace WindowsForms_print
 
                                                 btFormat.Print();
                                                 //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                                imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
                                                 imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                             }
                                         }
@@ -6954,7 +7272,7 @@ namespace WindowsForms_print
                                             sn_laf = this.SN2_num.Text.Remove(0, this.SN2_num.Text.Length - s);
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (int.Parse(sn_aft) < int.Parse(sn_laf))
+                                                if (int.Parse(sn_aft) <= int.Parse(sn_laf))
                                                 {
                                                     imei2_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
@@ -7006,6 +7324,11 @@ namespace WindowsForms_print
                                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                             sn_aft = (int.Parse(sn_aft) + 1).ToString().PadLeft(s, '0');
                                                         }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -7038,7 +7361,7 @@ namespace WindowsForms_print
                                             SNHexNum2 = Convert.ToInt64(SNHexNum2, 16).ToString("X");
                                             for (int i = 0; i < int.Parse(this.HexPrintNum.Text); i++)
                                             {
-                                                if (SNHexNum.CompareTo(SNHexNum2) == -1)
+                                                if (SNHexNum.CompareTo(SNHexNum2) == -1 || SNHexNum.CompareTo(SNHexNum2) == 0)
                                                 {
                                                     imei2_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(IMEI2_num1.Text.Length, '0');
                                                     btFormat.SubStrings["IMEI"].Value = imei_begin;
@@ -7089,6 +7412,11 @@ namespace WindowsForms_print
                                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
                                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                             SNHexNum = (Convert.ToInt64(SNHexNum, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                        }
+                                                        else
+                                                        {
+                                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
+                                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                                         }
                                                     }
                                                     else
@@ -7271,6 +7599,11 @@ namespace WindowsForms_print
 
                                             btFormat.Print();
                                             //Form1.Log("批量打印了IMEI号为" + imei_begin + "的制单", null);
+                                            imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText(imei_begin + "与" + imei2_begin + "插入失败\r\n");
                                             imei_begin = (Convert.ToInt64(imei_begin, 16) + Convert.ToInt64("2", 16)).ToString("X").PadLeft(IMEI_num1.Text.Length, '0');
                                         }
                                     }
@@ -15041,6 +15374,7 @@ namespace WindowsForms_print
 
                 //foreach (Gps_ManuOrderParam b in G_OMOP)
                 //{
+                    //获取状态0、1、2制单数据
                     Gps_ManuOrderParam b = MOPB.selectManuOrderParamByzhidanllBLL(this.CB_ZhiDan.Text);
                     s = b.SN2.Length;
                     this.SoftModel.Text = b.SoftModel;

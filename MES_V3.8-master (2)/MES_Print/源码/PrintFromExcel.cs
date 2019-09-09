@@ -552,18 +552,24 @@ namespace WindowsForms_print
                                                 string Insql = DrsbSql.Replace("TheValues", ToReplay);
                                                 DRSB.InsertRSFromExcelBLL(Insql);
                                             }
-                                        }
 
-                                        btFormat.SubStrings["IMEI1"].Value = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                                        btFormat.SubStrings["IMEI2"].Value = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                                        btFormat.SubStrings["IMEI3"].Value = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                                        btFormat.SubStrings["IMEI4"].Value = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                                        btFormat.SubStrings["IMEI5"].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                                        btFormat.SubStrings["ProductDate"].Value = DateTime.Now.ToString("yyyy.MM.dd");
-                                        //打印份数,同序列打印的份数
-                                        btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
-                                        btFormat.Print();//打印
-                                        Form1.Log("Excel打印了机身贴IMEI号为" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "的制单", null);
+                                            btFormat.SubStrings["IMEI1"].Value = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                            btFormat.SubStrings["IMEI2"].Value = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                                            btFormat.SubStrings["IMEI3"].Value = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                                            btFormat.SubStrings["IMEI4"].Value = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                                            btFormat.SubStrings["IMEI5"].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                                            btFormat.SubStrings["ProductDate"].Value = DateTime.Now.ToString("yyyy.MM.dd");
+                                            //打印份数,同序列打印的份数
+                                            btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
+                                            btFormat.Print();//打印
+                                            Form1.Log("Excel打印了机身贴IMEI号为" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "的制单", null);
+                                        }
+                                        else
+                                        {
+                                            player.Play();
+                                            this.remined.AppendText("IMEI号 " + dataGridView1.Rows[i].Cells[1].Value.ToString() + " 上传失败\r\n");
+                                        }
+                                        
                                         IsRepeat[i] = true;
                                         DRSBIsRepeat[i] = true;
                                     }
@@ -596,18 +602,23 @@ namespace WindowsForms_print
                                             DRSB.UpdateDRSFromExcelBLL(ToReplay);
                                                 
                                             this.remined.AppendText("关联表更新IMEI号 " + dataGridView1.Rows[i].Cells[1].Value.ToString() + " \r\n");
-                                        }
 
-                                        btFormat.SubStrings["IMEI1"].Value = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                                        btFormat.SubStrings["IMEI2"].Value = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                                        btFormat.SubStrings["IMEI3"].Value = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                                        btFormat.SubStrings["IMEI4"].Value = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                                        btFormat.SubStrings["IMEI5"].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                                        btFormat.SubStrings["ProductDate"].Value = DateTime.Now.ToString("yyyy.MM.dd");
-                                        //打印份数,同序列打印的份数
-                                        btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
-                                        btFormat.Print();//打印
-                                        Form1.Log("Excel打印了机身贴IMEI号为" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "的制单", null);
+                                            btFormat.SubStrings["IMEI1"].Value = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                            btFormat.SubStrings["IMEI2"].Value = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                                            btFormat.SubStrings["IMEI3"].Value = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                                            btFormat.SubStrings["IMEI4"].Value = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                                            btFormat.SubStrings["IMEI5"].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                                            btFormat.SubStrings["ProductDate"].Value = DateTime.Now.ToString("yyyy.MM.dd");
+                                            //打印份数,同序列打印的份数
+                                            btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
+                                            btFormat.Print();//打印
+                                            Form1.Log("Excel打印了机身贴IMEI号为" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "的制单", null);
+                                        }
+                                        else
+                                        {
+                                            player.Play();
+                                            this.remined.AppendText("IMEI号 " + dataGridView1.Rows[i].Cells[1].Value.ToString() + " 上传失败\r\n");
+                                        }
                                         IsRepeat[i] = true;
 
                                     }
