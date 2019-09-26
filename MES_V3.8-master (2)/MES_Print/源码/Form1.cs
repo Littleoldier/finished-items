@@ -306,6 +306,11 @@ namespace WindowsForms_print
             this.Remake.Clear();
             this.IMEIRel.Clear();
 
+            this.Rfid_num1.Clear();
+            this.Rfid_num2.Clear();
+            this.Rfid_digit.Clear();
+            this.Rfid_prefix.Clear();
+
             this.IMEI2_num1.Clear();
             this.IMEI2_num2.Clear();
             //this.IMEI2Rel.Clear();
@@ -8250,12 +8255,25 @@ namespace WindowsForms_print
                                                     {
                                                         if (this.CheckIMEI2.Checked == false)
                                                         {
-                                                            string sn1_prefix = SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
-                                                            long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
-                                                            string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
-                                                            string sn2_suffix = SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
-                                                            MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'));
-                                                            this.SN1_num.Text = sn1;
+                                                            if(this.SNHex.Checked == false)
+                                                            {
+                                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                                long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
+                                                                string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
+                                                                string sn2_suffix = this.SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
+                                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'));
+                                                                this.SN1_num.Text = sn1;
+                                                            }
+                                                            else
+                                                            {
+                                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                                string Hex = this.SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s);
+                                                                string sn_16str = (Convert.ToInt64(Hex, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                                string sn1 = sn1_prefix + sn_16str;
+                                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, sn_16str);
+                                                                this.SN1_num.Text = sn1;
+                                                            }
+                                                           
                                                         }
                                                         Result nResult1 = btFormat.Print("标签打印软件", waitout, out messages);
                                                         Form1.Log("打印了IMEI号为" + this.IMEI_Start.Text + "的制单", null);
@@ -8938,13 +8956,30 @@ namespace WindowsForms_print
                                                     {
                                                         if (this.CheckIMEI2.Checked == false)
                                                         {
-                                                            string sn1_prefix = SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
-                                                            long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
-                                                            string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
-                                                            string sn2_suffix = SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
-                                                            MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'));
-                                                            this.SN1_num.Text = sn1;
-
+                                                            //string sn1_prefix = SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                            //long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
+                                                            //string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
+                                                            //string sn2_suffix = SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
+                                                            //MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'));
+                                                            //this.SN1_num.Text = sn1;
+                                                            if (this.SNHex.Checked == false)
+                                                            {
+                                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                                long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
+                                                                string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
+                                                                string sn2_suffix = this.SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
+                                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'));
+                                                                this.SN1_num.Text = sn1;
+                                                            }
+                                                            else
+                                                            {
+                                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                                string Hex = this.SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s);
+                                                                string sn_16str = (Convert.ToInt64(Hex, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                                string sn1 = sn1_prefix + sn_16str;
+                                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, sn_16str);
+                                                                this.SN1_num.Text = sn1;
+                                                            }
                                                         }
                                                         Result nResult1 = btFormat.Print("标签打印软件", waitout, out messages);
                                                         Form1.Log("打印了IMEI号为" + this.IMEI_Start.Text + "的制单", null);
@@ -9653,6 +9688,7 @@ namespace WindowsForms_print
                         {
                             MessageBox.Show("Exception:" + ex.Message);
                         }
+                       
                     }
                 }
                
@@ -12725,7 +12761,7 @@ namespace WindowsForms_print
                                 }
                                 else
                                 {
-                                    this.reminder.AppendText(this.IMEI_Start.Text + "无关联\r\n");
+                                    this.reminder.AppendText(this.Re_IMEINum.Text + "无关联\r\n");
                                     player.Play();
                                     this.Re_IMEINum.Clear();
                                     this.Re_IMEINum.Focus();
@@ -12739,8 +12775,8 @@ namespace WindowsForms_print
                             if (PMB.CheckReCHOrJSIMEIBLL(this.Re_IMEINum.Text, 1))
                             {
                                 //btFormat.SubStrings["SN"].Value = snstr;
-                                //if (snstr == "")
-                                //    btFormat.SubStrings["SN"].Value = PMB.SelectOnlySnByIMEIBLL(this.Re_IMEINum.Text);
+                                if (snstr == "")
+                                    btFormat.SubStrings["SN"].Value = PMB.SelectOnlySnByIMEIBLL(this.Re_IMEINum.Text);
 
                                 //更新打印信息到数据表
                                 string RE_PrintTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff");
@@ -13024,7 +13060,7 @@ namespace WindowsForms_print
                                 }
                                 else
                                 {
-                                    this.reminder.AppendText(this.IMEI_Start.Text + "无关联\r\n");
+                                    this.reminder.AppendText(this.Re_IMEINum.Text + "无关联\r\n");
                                     player.Play();
                                     this.Re_IMEINum.Clear();
                                     this.Re_IMEINum.Focus();
@@ -13037,8 +13073,8 @@ namespace WindowsForms_print
                             {
                                 btFormat.SubStrings["IMEI2"].Value = PMB.SelectIMEI2ByIMEIBLL(this.Re_IMEINum.Text);
 
-                                //if(snstr == "")
-                                //     btFormat.SubStrings["SN"].Value = PMB.SelectOnlySnByIMEIBLL(this.Re_IMEINum.Text);
+                                if (snstr == "")
+                                    btFormat.SubStrings["SN"].Value = PMB.SelectOnlySnByIMEIBLL(this.Re_IMEINum.Text);
                                 //btFormat.SubStrings["SN"].Value = snstr;
 
                                 //更新打印信息到数据表
@@ -14554,6 +14590,11 @@ namespace WindowsForms_print
                     this.IMEI2_num1.Text = b.IMEI2Start;
                     this.IMEI2_num2.Text = b.IMEI2End;
                     this.IMEI2_Present.Text = b.IMEI2Prints;
+
+                    this.Rfid_num1.Text = b.RFIDStart;
+                    this.Rfid_num2.Text = b.RFIDEnd;
+                    this.Rfid_digit.Text = b.RFID_digits;
+                    this.Rfid_prefix.Text = b.RFID_prefix;
                     //this.IMEI2Rel.Text = b.IMEI2Rel;
                     if (b.Remark1 != "")
                     {
@@ -15001,6 +15042,8 @@ namespace WindowsForms_print
             this.PrintMode1.Enabled = true;
             this.PrintMode2.Enabled = true;
 
+            this.RFID_Start.ReadOnly = true;
+
             this.SiginIN.Enabled = true;
             this.QuitBt.Enabled = true;
 
@@ -15282,6 +15325,8 @@ namespace WindowsForms_print
             this.ToUnlock.Enabled = true;
 
             
+            this.RFID_Start.ReadOnly = false;
+
             if (this.CB_ZhiDan.Text != "")
             {
                 MOPB.UpdateJS_TemplatePathDAL(this.CB_ZhiDan.Text, this.Select_Template1.Text);
@@ -15397,8 +15442,12 @@ namespace WindowsForms_print
                     this.IMEI2_num1.Text = b.IMEI2Start;
                     this.IMEI2_num2.Text = b.IMEI2End;
                     this.IMEI2_Present.Text = b.IMEI2Prints;
-                    //this.IMEI2Rel.Text = b.IMEI2Rel;
-                    if (b.Remark1 != "")
+                    this.Rfid_num1.Text = b.RFIDStart;
+                    this.Rfid_num2.Text = b.RFIDEnd;
+                    this.Rfid_digit.Text = b.RFID_digits;
+                    this.Rfid_prefix.Text = b.RFID_prefix;
+                //this.IMEI2Rel.Text = b.IMEI2Rel;
+                if (b.Remark1 != "")
                     {
                         string rem = b.Remark1;
                         string[] remark = rem.Split('：');
@@ -16182,6 +16231,437 @@ namespace WindowsForms_print
             return str0 ;
         }
 
+        //扫入RFID
+        private void RFID_Start_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (this.UserShow.Text == "")
+                {
+                    this.reminder.AppendText("请先登录\r\n");
+                    return;
+                }
+                if (this.CB_ZhiDan.Text == "")
+                {
+                    player2.Play();
+                    this.reminder.AppendText("请先选择制单\r\n");
+                    this.RFID_Start.Clear();
+                    this.RFID_Start.Focus();
+                    return;
+                }
+                if (this.StartZhiDan == 0)
+                {
+                    this.reminder.AppendText("请获取制单数据\r\n");
+                    this.RFID_Start.Clear();
+                    this.RFID_Start.Focus();
+                    return;
+                }
+
+                if (this.Select_Template1.Text == "")
+                {
+                    this.reminder.AppendText("打印模板为空\r\n");
+                    this.RFID_Start.Clear();
+                    this.RFID_Start.Focus();
+                    return;
+                }
+                
+                if (this.ToLock.Enabled == true)
+                {
+                    this.reminder.AppendText("请锁定\r\n");
+                    this.RFID_Start.Clear();
+                    this.RFID_Start.Focus();
+                    return;
+                }
+
+                try
+                {
+                    //查rfid位数
+                    if (this.Rfid_digit.Text == "")
+                    {
+                        this.reminder.AppendText("RFID位数为空\r\n");
+                        this.RFID_Start.Clear();
+                        this.RFID_Start.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        //对比前缀
+                        int RFID_prefix_width = this.Rfid_prefix.Text.Length;
+                        string RFID_prefix = this.RFID_Start.Text.Substring(0, RFID_prefix_width);
+                        if (RFID_prefix != this.Rfid_prefix.Text)
+                        {
+                            player.Play();
+                            this.reminder.AppendText("RFID号前缀错误\r\n");
+                            this.RFID_Start.Clear();
+                            this.RFID_Start.Focus();
+                            return;
+                        }
+
+                        //查范围
+                        if (int.Parse(this.Rfid_digit.Text) == this.RFID_Start.Text.Length)
+                        {
+                            if(this.Rfid_num1.Text.CompareTo(this.RFID_Start.Text) == 1 || this.Rfid_num2.Text.CompareTo(this.RFID_Start.Text) == -1)
+                            {
+                                this.reminder.AppendText("RFID不在范围内\r\n");
+                                player.Play();
+                                this.RFID_Start.Clear();
+                                this.RFID_Start.Focus();
+                                return;
+                            }
+
+                            
+                            //查rfid是否存在关联表
+                            if (!DRSB.CheckRFIDBLL(this.RFID_Start.Text))
+                            {
+                                //检查sn号是否为空
+                                if (this.SN1_num.Text != "")
+                                {
+                                    if (this.SN2_num.Text == "")
+                                    {
+                                        this.reminder.AppendText("SN终止位为空\r\n");
+                                        player.Play();
+                                        this.RFID_Start.Clear();
+                                        this.RFID_Start.Focus();
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    this.reminder.AppendText("SN起始位为空\r\n");
+                                    player.Play();
+                                    this.RFID_Start.Clear();
+                                    this.RFID_Start.Focus();
+                                    return;
+                                }
+
+                                if(this.IMEI_num1.Text == "")
+                                {
+                                    this.reminder.AppendText("IMEI起始位为空\r\n");
+                                    player.Play();
+                                    this.RFID_Start.Clear();
+                                    this.RFID_Start.Focus();
+                                    return;
+                                }
+                                else
+                                {
+                                    if (this.IMEI_num2.Text == "")
+                                    {
+                                        this.reminder.AppendText("IMEI终止位为空\r\n");
+                                        player.Play();
+                                        this.RFID_Start.Clear();
+                                        this.RFID_Start.Focus();
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        if (this.IMEI_num1.Text.Length != this.IMEI_num2.Text.Length)
+                                        {
+                                            this.reminder.AppendText("IMEI位数不符合\r\n");
+                                            player.Play();
+                                            this.RFID_Start.Clear();
+                                            this.RFID_Start.Focus();
+                                            return;
+                                        }
+
+                                        if(this.IMEI_Present.Text != "")
+                                        {
+                                            if (this.IMEI_num1.Text.Length != this.IMEI_Present.Text.Length)
+                                            {
+                                                this.reminder.AppendText("IMEI位数不符合\r\n");
+                                                player.Play();
+                                                this.RFID_Start.Clear();
+                                                this.RFID_Start.Focus();
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                                
+
+                                long imei_begin;
+                                string begin0 = "", imei15, imei_start;
+                                
+                                //Rfid检查IMEI号
+                                if (this.IMEI_Present.Text == "")
+                                {
+                                    if (long.Parse(this.IMEI_num1.Text) < long.Parse(this.IMEI_num2.Text))
+                                    {
+                                        imei_begin = long.Parse(this.IMEI_num1.Text);
+                                        begin0 = GetLength0(imei_begin, this.IMEI_num1.Text);
+                                        imei15 = getimei15(begin0 + imei_begin.ToString());
+
+                                        if(this.NoCheckCode.Checked == true)
+                                            imei_start = begin0 + imei_begin;
+                                        else
+                                            imei_start = begin0 + imei_begin + imei15;
+
+                                        LabelFormatDocument btFormat = btEngine.Documents.Open(lj);
+                                        ClearTemplate1ToVlue(btFormat);
+                                        //指定打印机名称
+                                        btFormat.PrintSetup.PrinterName = this.Printer1.Text;
+                                        //打印份数,同序列打印的份数
+                                        btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
+
+                                        btFormat.SubStrings["IMEI"].Value = imei_start;
+                                        btFormat.SubStrings["RFID"].Value = this.RFID_Start.Text.Trim();
+                                        if(this.NoSn.Checked == false)
+                                            btFormat.SubStrings["SN"].Value = this.SN1_num.Text;
+
+                                        if (!PMB.CheckIMEIBLL(imei_start))
+                                        {
+                                            //对模板相应字段进行赋值
+                                            ValueToTemplate(btFormat);
+                                            //记录打印信息日志
+                                            ProductTime = System.DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:fff");
+                                            
+                                            PList.Claer();
+                                            PList.Zhidan = this.CB_ZhiDan.Text.Trim();
+                                            PList.IMEI = imei_start;
+                                            PList.IMEIStart = this.IMEI_num1.Text.Trim();
+                                            PList.IMEIEnd = this.IMEI_num2.Text.Trim();
+                                            PList.SN = this.SN1_num.Text;
+                                            PList.SIM = "";
+                                            PList.VIP = "";
+                                            PList.BAT = "";
+                                            PList.IMEIRel = this.IMEIRel.Text.Trim();
+                                            PList.SoftModel = this.SoftModel.Text.Trim();
+                                            PList.Version = this.SoftwareVersion.Text.Trim();
+                                            PList.Remark = this.Remake.Text.Trim();
+                                            PList.JS_PrintTime = ProductTime;
+                                            PList.JS_TemplatePath = this.Select_Template1.Text.Trim();
+                                            PList.CH_PrintTime = "";
+                                            PList.CH_TemplatePath1 = null;
+                                            PList.CH_TemplatePath2 = null;
+                                            PList.RFID = this.RFID_Start.Text;
+                                            PList.ICCID = "";
+                                            PList.MAC = "";
+                                            PList.Equipment = "";
+                                            PList.JSUserName = this.UserShow.Text;
+                                            PList.JSUserDes = this.UserDesShow.Text;
+                                            if (PMB.InsertPrintMessageBLL(PList))
+                                            {
+                                                if (DRSB.CheckIMEIBLL(imei_start))
+                                                {
+                                                    DRSB.UpdateSN_RFIDDAL(imei_start, this.SN1_num.Text, this.RFID_Start.Text);
+                                                }
+                                                else
+                                                {
+                                                    //记录关联数据信息到关联表
+                                                    Drs.Claer();
+                                                    Drs.IMEI1 = imei_start;
+                                                    Drs.IMEI2 = this.SN1_num.Text;
+
+                                                    Drs.RFID = this.RFID_Start.Text;
+                                                    Drs.ZhiDan = this.CB_ZhiDan.Text;
+                                                    Drs.TestTime = System.DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:fff");
+                                                    DRSB.InsertRelativeSheetBLL(Drs);
+                                                }
+                                                if (this.SNHex.Checked == false)
+                                                {
+                                                    string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                    long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
+                                                    string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
+                                                    string sn2_suffix = this.SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
+                                                    MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'), begin0 + (imei_begin).ToString());
+                                                    this.SN1_num.Text = sn1;
+                                                }
+                                                else
+                                                {
+                                                    string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                    string Hex = this.SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s);
+                                                    string sn_16str = (Convert.ToInt64(Hex, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                    string sn1 = sn1_prefix + sn_16str;
+                                                    MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, sn_16str, begin0 + (imei_begin).ToString());
+                                                    this.SN1_num.Text = sn1;
+                                                }
+
+                                                this.IMEI_Present.Text = begin0 + imei_begin .ToString();
+
+                                                btFormat.Print();
+                                                Form1.Log("打印了IMEI号为" + this.IMEI_num1.Text + "，RFID号为 " + this.RFID_Start.Text + "的制单", null);
+                                                this.RFID_Start.Clear();
+                                                this.RFID_Start.Focus();
+
+                                            }
+                                            else
+                                            {
+                                                this.reminder.AppendText("上传数据失败\r\n");
+                                                player.Play();
+                                                this.RFID_Start.Clear();
+                                                this.RFID_Start.Focus();
+                                                return;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText("IMEI已存在打印表\r\n");
+                                            player.Play();
+                                            this.RFID_Start.Clear();
+                                            this.RFID_Start.Focus();
+                                            return;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        this.reminder.AppendText("IMEI超出范围\r\n");
+                                        player.Play();
+                                        this.RFID_Start.Clear();
+                                        this.RFID_Start.Focus();
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    if ((long.Parse(this.IMEI_Present.Text) < long.Parse(this.IMEI_num1.Text)) || (long.Parse(this.IMEI_Present.Text) > long.Parse(this.IMEI_num2.Text)))
+                                    {
+                                        this.reminder.AppendText("IMEI不在范围内\r\n");
+                                        player.Play();
+                                        this.RFID_Start.Clear();
+                                        this.RFID_Start.Focus();
+                                        return;
+                                    }
+                                    
+                                    LabelFormatDocument btFormat = btEngine.Documents.Open(lj);
+                                    ClearTemplate1ToVlue(btFormat);
+                                    //指定打印机名称
+                                    btFormat.PrintSetup.PrinterName = this.Printer1.Text;
+                                    //打印份数,同序列打印的份数
+                                    btFormat.PrintSetup.IdenticalCopiesOfLabel = TN;
+                                    
+                                    imei_begin = long.Parse(this.IMEI_Present.Text) + 1;
+                                    begin0 = GetLength0(imei_begin, this.IMEI_Present.Text);
+                                    imei15 = getimei15(begin0 + imei_begin.ToString());
+                                    if (this.NoCheckCode.Checked == true)
+                                        imei_start = begin0 + imei_begin;
+                                    else
+                                        imei_start = begin0 + imei_begin + imei15;
+                                    
+                                    if (!PMB.CheckIMEIBLL(imei_start))
+                                    {
+                                        btFormat.SubStrings["IMEI"].Value = imei_start;
+                                        btFormat.SubStrings["RFID"].Value = this.RFID_Start.Text.Trim();
+                                        if (this.NoSn.Checked == false)
+                                            btFormat.SubStrings["SN"].Value = this.SN1_num.Text;
+
+                                        //对模板相应字段进行赋值
+                                        ValueToTemplate(btFormat);
+                                        //记录打印信息日志
+                                        ProductTime = System.DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:fff");
+                                        
+                                        PList.Claer();
+                                        PList.Zhidan = this.CB_ZhiDan.Text.Trim();
+                                        PList.IMEI = imei_start;
+                                        PList.IMEIStart = this.IMEI_num1.Text.Trim();
+                                        PList.IMEIEnd = this.IMEI_num2.Text.Trim();
+                                        PList.SN = this.SN1_num.Text;
+                                        PList.IMEIRel = this.IMEIRel.Text.Trim();
+                                        PList.SoftModel = this.SoftModel.Text.Trim();
+                                        PList.Version = this.SoftwareVersion.Text.Trim();
+                                        PList.Remark = this.Remake.Text.Trim();
+                                        PList.JS_PrintTime = ProductTime;
+                                        PList.JS_TemplatePath = this.Select_Template1.Text.Trim();
+                                        PList.CH_PrintTime = "";
+                                        PList.CH_TemplatePath1 = null;
+                                        PList.CH_TemplatePath2 = null;
+                                        PList.RFID = this.RFID_Start.Text;
+                                        PList.JSUserName = this.UserShow.Text;
+                                        PList.JSUserDes = this.UserDesShow.Text;
+                                        if (PMB.InsertPrintMessageBLL(PList))
+                                        {
+                                            if (DRSB.CheckIMEIBLL(imei_start))
+                                            {
+                                                DRSB.UpdateSN_RFIDDAL(imei_start, this.SN1_num.Text, this.RFID_Start.Text);
+                                            }
+                                            else
+                                            {
+                                                //记录关联数据信息到关联表
+                                                Drs.Claer();
+                                                Drs.IMEI1 = imei_start;
+                                                Drs.IMEI2 = this.SN1_num.Text;
+
+                                                Drs.RFID = this.RFID_Start.Text;
+                                                Drs.ZhiDan = this.CB_ZhiDan.Text;
+                                                Drs.TestTime = System.DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:fff");
+                                                DRSB.InsertRelativeSheetBLL(Drs);
+                                            }
+
+                                            if (this.SNHex.Checked == false)
+                                            {
+                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                long sn1_suffix = long.Parse(SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s));
+                                                string sn1 = sn1_prefix + (sn1_suffix + 1).ToString().PadLeft(s, '0');
+                                                string sn2_suffix = this.SN2_num.Text.Remove(0, (this.SN2_num.Text.Length) - s);
+                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, (sn1_suffix + 1).ToString().PadLeft(s, '0'), begin0 + (imei_begin).ToString());
+                                                this.SN1_num.Text = sn1;
+                                            }
+                                            else
+                                            {
+                                                string sn1_prefix = this.SN1_num.Text.Substring(0, this.SN1_num.Text.Length - s);
+                                                string Hex = this.SN1_num.Text.Remove(0, (this.SN1_num.Text.Length) - s);
+                                                string sn_16str = (Convert.ToInt64(Hex, 16) + Convert.ToInt64("1", 16)).ToString("X").PadLeft(s, '0');
+                                                string sn1 = sn1_prefix + sn_16str;
+                                                MOPB.UpdateSNnumberBLL(this.CB_ZhiDan.Text, sn_16str ,begin0 + (imei_begin).ToString());
+                                                this.SN1_num.Text = sn1;
+                                            }
+
+                                            this.IMEI_Present.Text = begin0 + imei_begin.ToString();
+
+                                            btFormat.Print();
+                                            Form1.Log("打印了IMEI号为" + this.IMEI_Present.Text + "，RFID号为 "+ this.RFID_Start.Text + "的制单", null);
+                                            this.RFID_Start.Clear();
+                                            this.RFID_Start.Focus();
+
+                                        }
+                                        else
+                                        {
+                                            this.reminder.AppendText("上传数据失败\r\n");
+                                            player.Play();
+                                            this.RFID_Start.Clear();
+                                            this.RFID_Start.Focus();
+                                            return;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        this.reminder.AppendText("IMEI已存在打印表\r\n");
+                                        player.Play();
+                                        this.RFID_Start.Clear();
+                                        this.RFID_Start.Focus();
+                                        return;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                this.reminder.AppendText("RFID已存在关联表\r\n");
+                                player.Play();
+                                this.RFID_Start.Clear();
+                                this.RFID_Start.Focus();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            this.reminder.AppendText("RFID位数不符\r\n");
+                            player.Play();
+                            this.RFID_Start.Clear();
+                            this.RFID_Start.Focus();
+                            return;
+                        }
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception:" + ex.Message);
+                }
+                
+            }
+        }
+
 
         //IMEI十六进制与不规则查询
         public int IMEIHexOrIrregular(string Strimei)
@@ -16268,8 +16748,12 @@ namespace WindowsForms_print
                         this.IMEI2_num1.Text = b.IMEI2Start;
                         this.IMEI2_num2.Text = b.IMEI2End;
                         this.IMEI2_Present.Text = b.IMEI2Prints;
-                        //this.IMEI2Rel.Text = b.IMEI2Rel;
-                        if (b.Remark1 != "")
+                        this.Rfid_num1.Text = b.RFIDStart;
+                        this.Rfid_num2.Text = b.RFIDEnd;
+                        this.Rfid_digit.Text = b.RFID_digits;
+                        this.Rfid_prefix.Text = b.RFID_prefix;
+                    //this.IMEI2Rel.Text = b.IMEI2Rel;
+                    if (b.Remark1 != "")
                         {
                             string rem = b.Remark1;
                             string[] remark = rem.Split('：');
@@ -16658,6 +17142,193 @@ namespace WindowsForms_print
                 this.ReImeiNum2.ReadOnly = true;
             }
         }
+
+
+
+        //public void findField()
+        //{
+        //    if (CheckFields.Count != 0)
+        //    {
+        //        List<DataRelativeSheet> drs = DRSB.GetCheckIMEIBLL(this.IMEI_Start.Text);
+        //        if (drs.Count == 1)
+        //        {
+        //            foreach (DataRelativeSheet a in drs)
+        //            {
+        //                if (this.CheckIMEI2.Checked == true)
+        //                {
+        //                    if (a.IMEI2 != "")
+        //                    {
+        //                        //btFormat.SubStrings["SN"].Value = a.IMEI2;
+        //                        //snstr = a.IMEI2;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("SN号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckSIM.Checked == true)
+        //                {
+        //                    if (a.IMEI3 != "")
+        //                    {
+        //                        btFormat.SubStrings["SIM"].Value = a.IMEI3;
+        //                        simstr = a.IMEI3;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("SIM号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckICCID.Checked == true)
+        //                {
+        //                    if (a.IMEI4 != "")
+        //                    {
+        //                        btFormat.SubStrings["ICCID"].Value = a.IMEI4;
+        //                        iccidstr = a.IMEI4;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("ICCID号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckMAC.Checked == true)
+        //                {
+        //                    if (a.IMEI6 != "")
+        //                    {
+        //                        btFormat.SubStrings["MAC"].Value = a.IMEI6;
+        //                        macstr = a.IMEI6;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("蓝牙号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckEquipment.Checked == true)
+        //                {
+        //                    if (a.IMEI7 != "")
+        //                    {
+        //                        btFormat.SubStrings["Equipment"].Value = a.IMEI7;
+        //                        equistr = a.IMEI7;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("设备号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+
+        //                }
+
+        //                if (this.CheckVIP.Checked == true)
+        //                {
+        //                    if (a.IMEI8 != "")
+        //                    {
+        //                        btFormat.SubStrings["VIP"].Value = a.IMEI8;
+        //                        vipstr = a.IMEI8;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("VIP号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckBAT.Checked == true)
+        //                {
+        //                    if (a.IMEI9 != "")
+        //                    {
+        //                        btFormat.SubStrings["BAT"].Value = a.IMEI9;
+        //                        batstr = a.IMEI9;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("BAT号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckRFID.Checked == true)
+        //                {
+        //                    if (a.RFID != "")
+        //                    {
+        //                        btFormat.SubStrings["RFID"].Value = a.RFID;
+        //                        rfidstr = a.RFID;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("RFID号为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+
+        //                if (this.CheckIMEI14.Checked == true)
+        //                {
+        //                    if (a.IMEI14 != "")
+        //                    {
+        //                        //btFormat.SubStrings["IMEI2"].Value = a.IMEI14;
+        //                        //IMEI2str = a.IMEI14;
+        //                    }
+        //                    else
+        //                    {
+        //                        this.reminder.AppendText("IMEI2为空\r\n");
+        //                        player.Play();
+        //                        this.IMEI_Start.Clear();
+        //                        this.IMEI2_Start.Clear();
+        //                        this.IMEI_Start.Focus();
+        //                        return;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            this.reminder.AppendText(this.IMEI_Start.Text + "无关联\r\n");
+        //            player.Play();
+        //            this.IMEI_Start.Clear();
+        //            this.IMEI2_Start.Clear();
+        //            this.IMEI_Start.Focus();
+        //            return;
+        //        }
+        //    }
+        //}
 
     }
 }

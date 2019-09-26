@@ -75,6 +75,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label39 = new System.Windows.Forms.Label();
+            this.Rfid_num2 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.RFID_Start = new System.Windows.Forms.TextBox();
+            this.Rfid_num1 = new System.Windows.Forms.TextBox();
+            this.Rfid_prefix = new System.Windows.Forms.TextBox();
+            this.Rfid_digit = new System.Windows.Forms.TextBox();
             this.InseIMEI2 = new System.Windows.Forms.CheckBox();
             this.CheckIMEI14 = new System.Windows.Forms.CheckBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -211,7 +220,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(979, 568);
+            this.label5.Location = new System.Drawing.Point(1256, 568);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 19);
             this.label5.TabIndex = 9;
@@ -219,7 +228,7 @@
             // 
             // ProductData
             // 
-            this.ProductData.Location = new System.Drawing.Point(977, 601);
+            this.ProductData.Location = new System.Drawing.Point(1254, 601);
             this.ProductData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ProductData.Name = "ProductData";
             this.ProductData.Size = new System.Drawing.Size(204, 25);
@@ -475,7 +484,7 @@
             // 
             // IMEI_Start
             // 
-            this.IMEI_Start.Location = new System.Drawing.Point(716, 455);
+            this.IMEI_Start.Location = new System.Drawing.Point(715, 461);
             this.IMEI_Start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IMEI_Start.Name = "IMEI_Start";
             this.IMEI_Start.ReadOnly = true;
@@ -615,6 +624,15 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.Linen;
+            this.tabPage4.Controls.Add(this.label39);
+            this.tabPage4.Controls.Add(this.Rfid_num2);
+            this.tabPage4.Controls.Add(this.label38);
+            this.tabPage4.Controls.Add(this.label37);
+            this.tabPage4.Controls.Add(this.label35);
+            this.tabPage4.Controls.Add(this.RFID_Start);
+            this.tabPage4.Controls.Add(this.Rfid_num1);
+            this.tabPage4.Controls.Add(this.Rfid_prefix);
+            this.tabPage4.Controls.Add(this.Rfid_digit);
             this.tabPage4.Controls.Add(this.InseIMEI2);
             this.tabPage4.Controls.Add(this.CheckIMEI14);
             this.tabPage4.Controls.Add(this.label34);
@@ -731,6 +749,84 @@
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "打印";
             // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(373, 603);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(99, 15);
+            this.label39.TabIndex = 149;
+            this.label39.Text = "RFID终止位：";
+            // 
+            // Rfid_num2
+            // 
+            this.Rfid_num2.Location = new System.Drawing.Point(477, 603);
+            this.Rfid_num2.Name = "Rfid_num2";
+            this.Rfid_num2.ReadOnly = true;
+            this.Rfid_num2.Size = new System.Drawing.Size(164, 25);
+            this.Rfid_num2.TabIndex = 148;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.Location = new System.Drawing.Point(716, 576);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(144, 19);
+            this.label38.TabIndex = 147;
+            this.label38.Text = "请扫入RFID号：";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(373, 558);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(99, 15);
+            this.label37.TabIndex = 146;
+            this.label37.Text = "RFID起始位：";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(340, 519);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(129, 15);
+            this.label35.TabIndex = 144;
+            this.label35.Text = "RFID位数、前缀：";
+            // 
+            // RFID_Start
+            // 
+            this.RFID_Start.Location = new System.Drawing.Point(715, 601);
+            this.RFID_Start.Name = "RFID_Start";
+            this.RFID_Start.ReadOnly = true;
+            this.RFID_Start.Size = new System.Drawing.Size(203, 25);
+            this.RFID_Start.TabIndex = 143;
+            this.RFID_Start.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RFID_Start_KeyPress);
+            // 
+            // Rfid_num1
+            // 
+            this.Rfid_num1.Location = new System.Drawing.Point(477, 558);
+            this.Rfid_num1.Name = "Rfid_num1";
+            this.Rfid_num1.ReadOnly = true;
+            this.Rfid_num1.Size = new System.Drawing.Size(164, 25);
+            this.Rfid_num1.TabIndex = 142;
+            // 
+            // Rfid_prefix
+            // 
+            this.Rfid_prefix.Location = new System.Drawing.Point(539, 515);
+            this.Rfid_prefix.Name = "Rfid_prefix";
+            this.Rfid_prefix.ReadOnly = true;
+            this.Rfid_prefix.Size = new System.Drawing.Size(102, 25);
+            this.Rfid_prefix.TabIndex = 141;
+            // 
+            // Rfid_digit
+            // 
+            this.Rfid_digit.Location = new System.Drawing.Point(477, 515);
+            this.Rfid_digit.Name = "Rfid_digit";
+            this.Rfid_digit.ReadOnly = true;
+            this.Rfid_digit.Size = new System.Drawing.Size(56, 25);
+            this.Rfid_digit.TabIndex = 140;
+            // 
             // InseIMEI2
             // 
             this.InseIMEI2.AutoSize = true;
@@ -825,7 +921,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(331, 566);
+            this.label30.Location = new System.Drawing.Point(4, 694);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(139, 15);
             this.label30.TabIndex = 130;
@@ -834,7 +930,7 @@
             // 
             // IMEI2Rel
             // 
-            this.IMEI2Rel.Location = new System.Drawing.Point(477, 559);
+            this.IMEI2Rel.Location = new System.Drawing.Point(150, 687);
             this.IMEI2Rel.Name = "IMEI2Rel";
             this.IMEI2Rel.ReadOnly = true;
             this.IMEI2Rel.Size = new System.Drawing.Size(164, 25);
@@ -844,7 +940,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(333, 518);
+            this.label27.Location = new System.Drawing.Point(11, 606);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(137, 15);
             this.label27.TabIndex = 128;
@@ -870,7 +966,7 @@
             // 
             // IMEI2_Present
             // 
-            this.IMEI2_Present.Location = new System.Drawing.Point(477, 515);
+            this.IMEI2_Present.Location = new System.Drawing.Point(155, 603);
             this.IMEI2_Present.Name = "IMEI2_Present";
             this.IMEI2_Present.ReadOnly = true;
             this.IMEI2_Present.Size = new System.Drawing.Size(164, 25);
@@ -1158,7 +1254,7 @@
             // 
             // TemplateNum
             // 
-            this.TemplateNum.Location = new System.Drawing.Point(716, 601);
+            this.TemplateNum.Location = new System.Drawing.Point(983, 601);
             this.TemplateNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TemplateNum.Name = "TemplateNum";
             this.TemplateNum.Size = new System.Drawing.Size(203, 25);
@@ -1171,7 +1267,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(712, 567);
+            this.label23.Location = new System.Drawing.Point(979, 567);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(209, 20);
             this.label23.TabIndex = 78;
@@ -1479,7 +1575,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(18, 48);
             this.Name = "Form1";
-            this.Text = " MES-Print_1.0.24_201909061520";
+            this.Text = " MES-Print_1.0.25_201909261500";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1607,6 +1703,15 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox InseIMEI2;
         private System.Windows.Forms.CheckBox CheckIMEI14;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox RFID_Start;
+        private System.Windows.Forms.TextBox Rfid_num1;
+        private System.Windows.Forms.TextBox Rfid_prefix;
+        private System.Windows.Forms.TextBox Rfid_digit;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox Rfid_num2;
     }
 }
 

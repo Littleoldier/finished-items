@@ -20,6 +20,7 @@ using ManuPrintRecord.Param.BLL;
 using System.Resources;
 using WindowsForms_print.Properties;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace WindowsForms_print
 {
@@ -167,6 +168,8 @@ namespace WindowsForms_print
             int wid = Screen.PrimaryScreen.WorkingArea.Width;
             this.Width = wid;
             CheckForIllegalCrossThreadCalls = false;
+
+
         }
 
         [DllImport("kernel32.dll")]
@@ -1715,20 +1718,8 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("SIM "+this.SIMStart.Text + "打印重号\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
-                                        return;
+                                        ClrearStartText();
+                                         return;
                                     }
                                 }
 
@@ -1747,21 +1738,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("ICCID "+this.ICCIDStart.Text + "打印重号\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
-                                        return;
-                                    }
+                                         ClrearStartText();
+                                         return;
+                                }
                                 }
                             }
 
@@ -1778,21 +1757,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("MAC "+this.MACStart.Text + "打印重号\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                         ClrearStartText();
                                         return;
-                                    }
+                                }
                                 }
                             }
 
@@ -1809,21 +1776,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("Equipment "+this.EquipmentStart.Text + "打印重号\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                         ClrearStartText();
                                         return;
-                                    }
+                                      }
                                 }
                             }
                             if (this.CheckVIP.Checked == true)
@@ -1839,21 +1794,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("VIP "+this.VIPStart.Text + "打印重号\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                         ClrearStartText();
                                         return;
-                                    }
+                                }
                                 }
 
                             }
@@ -1870,21 +1813,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("BAT "+this.BATStart.Text + "打印重号\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
-                                        return;
-                                    }
+                                          ClrearStartText();
+                                         return;
+                                     }
                                 }
                             }
                             if (this.CheckRFID.Checked == true)
@@ -1900,21 +1831,9 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("RFID "+this.RFIDStart.Text + "打印重号\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
-                                        return;
-                                    }
+                                        ClrearStartText();
+                                         return;
+                                }
                                 }
                             }
 
@@ -1951,21 +1870,9 @@ namespace WindowsForms_print
                             if (checkFalge == 1)
                             {
                                 player.Play();
-                            //this.IMEI_Start.Enabled = true;
-                            this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
-                            }
+                             }
                         //}
                         //}
 
@@ -1984,19 +1891,7 @@ namespace WindowsForms_print
                                     if (ASS_sn.CompareTo(this.SN2_num.Text) == 1)
                                     {
                                         this.reminder.AppendText("SN号超出范围\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
                                 }
@@ -2104,38 +1999,14 @@ namespace WindowsForms_print
                                             //更新SN号
                                             DRSB.UpdateSNDAL(this.IMEI_Start.Text, ASS_sn);
                                             this.SN1_num.Text = sn1;
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
-                                            //return;
+                                            ClrearStartText();
+                                            
                                         }
                                     }
                                     else
                                     {
-                                        //this.IMEI_Start.Enabled = true;
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
-                                        //return;
+                                        ClrearStartText();
+                                       
                                     }
                                 }
                                 if (this.updata_inline.Visible == true)
@@ -2188,19 +2059,7 @@ namespace WindowsForms_print
                                             if (this.SN1_num.Text.CompareTo(this.SN2_num.Text) == 1)
                                             {
                                                 this.reminder.AppendText("SN号超出范围\r\n");
-                                                //this.IMEI_Start.Enabled = true;
-                                                this.IMEI_Start.Clear();
-                                                this.SIMStart.Clear();
-                                                this.VIPStart.Clear();
-                                                this.BATStart.Clear();
-                                                this.ICCIDStart.Clear();
-                                                this.MACStart.Clear();
-                                                this.EquipmentStart.Clear();
-                                                this.ShowSN.Clear();
-                                                this.GLB_SN.Clear();
-                                                this.RFIDStart.Clear();
-                                                this.GLB_IMEI14.Clear();
-                                                this.IMEI_Start.Focus();
+                                                ClrearStartText();
                                                 return;
                                             }
                                             this.ShowSN.Text = this.SN1_num.Text;
@@ -2266,19 +2125,8 @@ namespace WindowsForms_print
                                     Drs.TestTime = System.DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:fff");
                                     DRSB.InsertRelativeSheetBLL(Drs);
                                 }
-                                //this.IMEI_Start.Enabled = true;
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
+                              
                                 if (this.updata_inline.Visible == true)
                                 {
                                     MOPB.UpdateStatusByZhiDanBLL(this.CB_ZhiDan.Text);
@@ -2289,19 +2137,8 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
+                               
                             }
                         }
                         catch (Exception ex)
@@ -2323,19 +2160,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                            
                                         }
                                         else
                                         {
@@ -2356,19 +2182,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                           
                                         }
                                         else
                                         {
@@ -2389,19 +2204,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                           
                                         }
                                         else
                                         {
@@ -2422,19 +2226,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                           
                                         }
                                         else
                                         {
@@ -2455,19 +2248,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                            
                                         }
                                         else
                                         {
@@ -2488,19 +2270,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                          
                                         }
                                         else
                                         {
@@ -2521,19 +2292,8 @@ namespace WindowsForms_print
                                         {
                                             player.Play();
                                             this.reminder.AppendText(this.IMEI_Start.Text + "重号\r\n");
-                                            //this.IMEI_Start.Enabled = true;
-                                            this.IMEI_Start.Clear();
-                                            this.SIMStart.Clear();
-                                            this.VIPStart.Clear();
-                                            this.BATStart.Clear();
-                                            this.ICCIDStart.Clear();
-                                            this.MACStart.Clear();
-                                            this.EquipmentStart.Clear();
-                                            this.ShowSN.Clear();
-                                            this.GLB_SN.Clear();
-                                            this.RFIDStart.Clear();
-                                            this.GLB_IMEI14.Clear();
-                                            this.IMEI_Start.Focus();
+                                            ClrearStartText();
+                                           
                                         }
                                         else
                                         {
@@ -2645,32 +2405,15 @@ namespace WindowsForms_print
         //扫描SIM卡后触发事件
         private void SIMStart_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             try
             {
                 if (e.KeyChar == 13)
                 {
-                    //this.SIMStart.Enabled = false;
-
                     if (this.IMEI_Start.Text == "")
                     {
                         player.Play();
                         this.reminder.AppendText("请输入IMEI号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
 
@@ -2685,12 +2428,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("SIM号位数错误\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.SIMStart.Clear();
-                                this.IMEI_Start.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
                         }
@@ -2698,21 +2436,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("该制单未绑定SIM位数\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                         if (this.SIM_prefix.Text != "")
@@ -2723,21 +2447,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("SIM号前缀错误\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
                         }
@@ -2749,21 +2459,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("SIM号-" + this.SIMStart.Text + "重号\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
 
@@ -2773,21 +2469,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("SIM号-"+this.SIMStart.Text + "不存在关联表\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
                         }
@@ -2798,32 +2480,29 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("SIM-" + this.SIMStart.Text + "重号\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
 
                         }
 
+                        if (this.UpdataSimByImei.Checked == true)
+                        {
+                            //查找关联表上的是否存在 -- SIM 号
+                            if (DRSB.CheckSIMBLL(this.SIMStart.Text))
+                            {
+                                this.reminder.AppendText("关联表SIM -" + this.SIMStart.Text + "重号\r\n");
+                                ClrearStartText();
+                                return;
+                            }
+                        }
+
                         //检查制单号是否与关联表的制单号一致
                         string GLBzhidan = DRSB.SelectZhidanBySimBLL(this.SIMStart.Text);
-                    
 
+                        
                         //带出ICCID
-                        if(this.choose_iccid.Checked == true)
+                        if (this.choose_iccid.Checked == true)
                         {
                             //根据SIM卡号带出ICCID 有值带值，无值带空
                             this.ICCIDStart.Text = DRSB.SelectIccidBySimBLL(this.SIMStart.Text, G_zhidan);
@@ -2831,21 +2510,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("制单号与关联表不一致\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
                             //对带出的ICCID进行范围判断
@@ -2856,21 +2521,7 @@ namespace WindowsForms_print
                                 {
                                     player.Play();
                                     this.reminder.AppendText("ICCID不在范围内\r\n");
-                                    //this.IMEI_Start.Enabled = true;
-                                    //this.SIMStart.Enabled = true;
-
-                                    this.IMEI_Start.Clear();
-                                    this.SIMStart.Clear();
-                                    this.VIPStart.Clear();
-                                    this.BATStart.Clear();
-                                    this.ICCIDStart.Clear();
-                                    this.MACStart.Clear();
-                                    this.EquipmentStart.Clear();
-                                    this.ShowSN.Clear();
-                                    this.GLB_SN.Clear();
-                                    this.RFIDStart.Clear();
-                                    this.GLB_IMEI14.Clear();
-                                    this.IMEI_Start.Focus();
+                                    ClrearStartText();
                                     return;
                                 }
                                 else
@@ -2881,21 +2532,7 @@ namespace WindowsForms_print
                                     {
                                         player.Play();
                                         this.reminder.AppendText("ICCID不在范围内\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        //this.SIMStart.Enabled = true;
-
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
                                 }
@@ -2904,21 +2541,7 @@ namespace WindowsForms_print
                             {
                                 player.Play();
                                 this.reminder.AppendText("此SIM卡号带出的ICCID号为空\r\n");
-                                //this.IMEI_Start.Enabled = true;
-                                //this.SIMStart.Enabled = true;
-
-                                this.IMEI_Start.Clear();
-                                this.SIMStart.Clear();
-                                this.VIPStart.Clear();
-                                this.BATStart.Clear();
-                                this.ICCIDStart.Clear();
-                                this.MACStart.Clear();
-                                this.EquipmentStart.Clear();
-                                this.ShowSN.Clear();
-                                this.GLB_SN.Clear();
-                                this.RFIDStart.Clear();
-                                this.GLB_IMEI14.Clear();
-                                this.IMEI_Start.Focus();
+                                ClrearStartText();
                                 return;
                             }
                             ICCID = this.ICCIDStart.Text;
@@ -3263,6 +2886,11 @@ namespace WindowsForms_print
                                 }
                                 else
                                 {
+                                    ////查重
+                                    //if (1 == CheckField())
+                                    //    return;
+                                        
+
                                     UpInt1 = 0;
                                     UpInt2 = 0;
 
@@ -3329,21 +2957,8 @@ namespace WindowsForms_print
                                             player6.Play();
                                             break;
                                     }
-                                    //this.IMEI_Start.Enabled = true;
-                                    //this.SIMStart.Enabled = true;
-
-                                    this.IMEI_Start.Clear();
-                                    this.SIMStart.Clear();
-                                    this.VIPStart.Clear();
-                                    this.BATStart.Clear();
-                                    this.ICCIDStart.Clear();
-                                    this.MACStart.Clear();
-                                    this.EquipmentStart.Clear();
-                                    this.ShowSN.Clear();
-                                    this.GLB_SN.Clear();
-                                    this.RFIDStart.Clear();
-                                    this.GLB_IMEI14.Clear();
-                                    this.IMEI_Start.Focus();
+                                    ClrearStartText();
+                                   
                                     if (this.updata_inline.Visible == true)
                                     {
                                         MOPB.UpdateStatusByZhiDanBLL(this.CB_ZhiDan.Text);
@@ -3747,6 +3362,10 @@ namespace WindowsForms_print
                                 }
                                 else
                                 {
+                                    ////查重
+                                    //if (1 == CheckField())
+                                    //    return;
+
                                     UpInt1 = 0;
                                     UpInt2 = 0;
                                     //判断关联表是否有该SIM号，有的话根据该SIM号更新IMEI，无则插入一条记录
@@ -3810,20 +3429,7 @@ namespace WindowsForms_print
                                             player6.Play();
                                             break;
                                     }
-                                    //this.IMEI_Start.Enabled = true;
-                                    //this.SIMStart.Enabled = true;
-                                    this.IMEI_Start.Clear();
-                                    this.SIMStart.Clear();
-                                    this.VIPStart.Clear();
-                                    this.BATStart.Clear();
-                                    this.ICCIDStart.Clear();
-                                    this.MACStart.Clear();
-                                    this.EquipmentStart.Clear();
-                                    this.ShowSN.Clear();
-                                    this.GLB_SN.Clear();
-                                    this.RFIDStart.Clear();
-                                    this.GLB_IMEI14.Clear();
-                                    this.IMEI_Start.Focus();
+                                    ClrearStartText();
 
                                     if (this.updata_inline.Visible == true)
                                     {
@@ -3896,30 +3502,12 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
 
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
                 if (this.VIPStart.Text != "")
@@ -3932,44 +3520,14 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("VIP位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
                     else {
                         player.Play();
                         this.reminder.AppendText("该制单未绑定VIP位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if(this.VIP_prefix.Text != "")
@@ -3980,22 +3538,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("VIP前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -4004,24 +3547,19 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("VIP-"+this.VIPStart.Text+"重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- VIP 号
+                    if (DRSB.CheckVIPBLL(this.VIPStart.Text))
+                    {
+                        this.reminder.AppendText("关联表VIP -" + this.VIPStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
+
                     //打印及跳转
                     if (AssociatedFields.Count == 1)
                     {
@@ -4447,6 +3985,10 @@ namespace WindowsForms_print
                         //不出贴纸
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             int UpInt = 0;
 
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
@@ -4959,6 +4501,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             int UpInt = 0;
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
                             if (this.UpdataSimByImei.Checked == true)
@@ -5099,33 +4645,11 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
-                //this.BATStart.Enabled = false;
-
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-                    //this.BATStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
 
@@ -5139,23 +4663,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("BAT位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -5163,23 +4671,7 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("此制单未绑定BAT位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if(this.BAT_prefix.Text != "")
@@ -5190,23 +4682,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("BAT前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -5215,25 +4691,19 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("BAT-"+this.BATStart.Text+"重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- BAT 号
+                    if (DRSB.CheckBATBLL(this.BATStart.Text))
+                    {
+                        this.reminder.AppendText("关联表BAT -" + this.BATStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
+
                     //打印及跳转
                     if (AssociatedFields.Last().Value == "BAT")
                     {
@@ -5661,6 +5131,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             int UpInt = 0;
 
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
@@ -5797,34 +5271,12 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
-                //this.BATStart.Enabled = false;
-                //this.ICCIDStart.Enabled = false;
 
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-                    //this.BATStart.Enabled = true;
-                    //this.ICCIDStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
 
@@ -5838,24 +5290,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("ICCID位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -5863,24 +5298,7 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("该制单未绑定ICCID位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if(this.ICCID_prefix.Text != "")
@@ -5891,24 +5309,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("ICCID前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -5917,26 +5318,19 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("ICCID-"+ this.ICCIDStart.Text+"重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- ICCID 号
+                    if (DRSB.CheckICCIDBLL(this.ICCIDStart.Text))
+                    {
+                        this.reminder.AppendText("关联表ICCID -" + this.ICCIDStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
+
                     if (AssociatedFields.Last().Value == "ICCID")
                     {
                         if (this.NoPaper.Checked == false)
@@ -5952,24 +5346,7 @@ namespace WindowsForms_print
                                     if (ASS_sn.CompareTo(this.SN2_num.Text) == 1)
                                     {
                                         this.reminder.AppendText("SN号超出范围\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        //this.SIMStart.Enabled = true;
-                                        //this.VIPStart.Enabled = true;
-                                        //this.BATStart.Enabled = true;
-                                        //this.ICCIDStart.Enabled = true;
-
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
                                 }
@@ -6376,6 +5753,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
                             if (this.UpdataSimByImei.Checked == true)
                             {
@@ -6507,36 +5888,11 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
-                //this.BATStart.Enabled = false;
-                //this.ICCIDStart.Enabled = false;
-                //this.MACStart.Enabled = false;
-
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-                    //this.BATStart.Enabled = true;
-                    //this.ICCIDStart.Enabled = true;
-                    //this.MACStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
 
@@ -6549,25 +5905,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("MAC位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -6575,25 +5913,7 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("该制单未绑定MAC位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if(this.MAC_prefix.Text != "")
@@ -6604,25 +5924,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("MAC前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -6630,27 +5932,18 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("MAC"+this.MACStart.Text+"重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- MAC 号
+                    if (DRSB.CheckMACBLL(this.MACStart.Text))
+                    {
+                        this.reminder.AppendText("关联表MAC -" + this.MACStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
                     if (AssociatedFields.Last().Value == "MAC")
                     {
                         if (this.NoPaper.Checked == false)
@@ -6667,25 +5960,7 @@ namespace WindowsForms_print
                                     if (this.SN1_num.Text.CompareTo(this.SN2_num.Text) == 1)
                                     {
                                         this.reminder.AppendText("SN号超出范围\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        //this.SIMStart.Enabled = true;
-                                        //this.VIPStart.Enabled = true;
-                                        //this.BATStart.Enabled = true;
-                                        //this.ICCIDStart.Enabled = true;
-                                        //this.MACStart.Enabled = true;
-
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
                                 }
@@ -7091,6 +6366,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
                             if (this.UpdataSimByImei.Checked == true)
                             {
@@ -7217,38 +6496,11 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
-                //this.BATStart.Enabled = false;
-                //this.ICCIDStart.Enabled = false;
-                //this.MACStart.Enabled = false;
-                //this.EquipmentStart.Enabled = false;
-
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-                    //this.BATStart.Enabled = true;
-                    //this.ICCIDStart.Enabled = true;
-                    //this.MACStart.Enabled = true;
-                    //this.EquipmentStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
 
@@ -7261,26 +6513,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("设备号位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-                            //this.EquipmentStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -7288,26 +6521,7 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("该制单未绑定位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-                        //this.EquipmentStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if(this.Equipment_prefix.Text != "")
@@ -7318,26 +6532,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("设备号前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-                            //this.EquipmentStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -7345,28 +6540,19 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("设备号-"+this.EquipmentStart.Text+"重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-                        //this.EquipmentStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- Equipment 号
+                    if (DRSB.CheckEquipmentBLL(this.EquipmentStart.Text))
+                    {
+
+                        this.reminder.AppendText("关联表Equipment-" + this.EquipmentStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
                     if (AssociatedFields.Last().Value == "Equipment")
                     {
                         if (this.NoPaper.Checked == false)
@@ -7383,26 +6569,7 @@ namespace WindowsForms_print
                                     if (this.SN1_num.Text.CompareTo(this.SN2_num.Text) == 1)
                                     {
                                         this.reminder.AppendText("SN号超出范围\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        //this.SIMStart.Enabled = true;
-                                        //this.VIPStart.Enabled = true;
-                                        //this.BATStart.Enabled = true;
-                                        //this.ICCIDStart.Enabled = true;
-                                        //this.MACStart.Enabled = true;
-                                        //this.EquipmentStart.Enabled = true;
-
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
                                 }
@@ -7813,6 +6980,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
                             if (this.UpdataSimByImei.Checked == true)
                             {
@@ -7935,40 +7106,11 @@ namespace WindowsForms_print
         {
             if (e.KeyChar == 13)
             {
-                //this.IMEI_Start.Enabled = false;
-                //this.SIMStart.Enabled = false;
-                //this.VIPStart.Enabled = false;
-                //this.BATStart.Enabled = false;
-                //this.ICCIDStart.Enabled = false;
-                //this.MACStart.Enabled = false;
-                //this.EquipmentStart.Enabled = false;
-                //this.RFIDStart.Enabled = false;
-
                 if (this.IMEI_Start.Text == "")
                 {
                     player.Play();
                     this.reminder.AppendText("请输入IMEI号\r\n");
-                    //this.IMEI_Start.Enabled = true;
-                    //this.SIMStart.Enabled = true;
-                    //this.VIPStart.Enabled = true;
-                    //this.BATStart.Enabled = true;
-                    //this.ICCIDStart.Enabled = true;
-                    //this.MACStart.Enabled = true;
-                    //this.EquipmentStart.Enabled = true;
-                    //this.RFIDStart.Enabled = true;
-
-                    this.IMEI_Start.Clear();
-                    this.SIMStart.Clear();
-                    this.VIPStart.Clear();
-                    this.BATStart.Clear();
-                    this.ICCIDStart.Clear();
-                    this.MACStart.Clear();
-                    this.EquipmentStart.Clear();
-                    this.ShowSN.Clear();
-                    this.GLB_SN.Clear();
-                    this.RFIDStart.Clear();
-                    this.GLB_IMEI14.Clear();
-                    this.IMEI_Start.Focus();
+                    ClrearStartText();
                     return;
                 }
 
@@ -7981,27 +7123,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("RFID号位数错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-                            //this.EquipmentStart.Enabled = true;
-                            //this.RFIDStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -8009,27 +7131,7 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("该制单未绑定位数\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-                        //this.EquipmentStart.Enabled = true;
-                        //this.RFIDStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
                     if (this.RFID_prefix.Text != "")
@@ -8040,27 +7142,7 @@ namespace WindowsForms_print
                         {
                             player.Play();
                             this.reminder.AppendText("RFID号前缀错误\r\n");
-                            //this.IMEI_Start.Enabled = true;
-                            //this.SIMStart.Enabled = true;
-                            //this.VIPStart.Enabled = true;
-                            //this.BATStart.Enabled = true;
-                            //this.ICCIDStart.Enabled = true;
-                            //this.MACStart.Enabled = true;
-                            //this.EquipmentStart.Enabled = true;
-                            //this.RFIDStart.Enabled = true;
-
-                            this.IMEI_Start.Clear();
-                            this.SIMStart.Clear();
-                            this.VIPStart.Clear();
-                            this.BATStart.Clear();
-                            this.ICCIDStart.Clear();
-                            this.MACStart.Clear();
-                            this.EquipmentStart.Clear();
-                            this.ShowSN.Clear();
-                            this.GLB_SN.Clear();
-                            this.RFIDStart.Clear();
-                            this.GLB_IMEI14.Clear();
-                            this.IMEI_Start.Focus();
+                            ClrearStartText();
                             return;
                         }
                     }
@@ -8068,29 +7150,19 @@ namespace WindowsForms_print
                     {
                         player.Play();
                         this.reminder.AppendText("RFID号-" + this.RFIDStart.Text + "重号\r\n");
-                        //this.IMEI_Start.Enabled = true;
-                        //this.SIMStart.Enabled = true;
-                        //this.VIPStart.Enabled = true;
-                        //this.BATStart.Enabled = true;
-                        //this.ICCIDStart.Enabled = true;
-                        //this.MACStart.Enabled = true;
-                        //this.EquipmentStart.Enabled = true;
-                        //this.RFIDStart.Enabled = true;
-
-                        this.IMEI_Start.Clear();
-                        this.SIMStart.Clear();
-                        this.VIPStart.Clear();
-                        this.BATStart.Clear();
-                        this.ICCIDStart.Clear();
-                        this.MACStart.Clear();
-                        this.EquipmentStart.Clear();
-                        this.ShowSN.Clear();
-                        this.GLB_SN.Clear();
-                        this.RFIDStart.Clear();
-                        this.GLB_IMEI14.Clear();
-                        this.IMEI_Start.Focus();
+                        ClrearStartText();
                         return;
                     }
+
+                    //查找关联表上的是否存在 -- RFID 号
+                    if (DRSB.CheckRFIDBLL(this.RFIDStart.Text))
+                    {
+
+                        this.reminder.AppendText("关联表RFID -" + this.RFIDStart.Text + "重号\r\n");
+                        ClrearStartText();
+                        return ;
+                    }
+
                     if (AssociatedFields.Last().Value == "RFID")
                     {
                         if (this.NoPaper.Checked == false)
@@ -8107,27 +7179,7 @@ namespace WindowsForms_print
                                     if (this.SN1_num.Text.CompareTo(this.SN2_num.Text) == 1)
                                     {
                                         this.reminder.AppendText("SN号超出范围\r\n");
-                                        //this.IMEI_Start.Enabled = true;
-                                        //this.SIMStart.Enabled = true;
-                                        //this.VIPStart.Enabled = true;
-                                        //this.BATStart.Enabled = true;
-                                        //this.ICCIDStart.Enabled = true;
-                                        //this.MACStart.Enabled = true;
-                                        //this.EquipmentStart.Enabled = true;
-                                        //this.RFIDStart.Enabled = true;
-
-                                        this.IMEI_Start.Clear();
-                                        this.SIMStart.Clear();
-                                        this.VIPStart.Clear();
-                                        this.BATStart.Clear();
-                                        this.ICCIDStart.Clear();
-                                        this.MACStart.Clear();
-                                        this.EquipmentStart.Clear();
-                                        this.ShowSN.Clear();
-                                        this.GLB_SN.Clear();
-                                        this.RFIDStart.Clear();
-                                        this.GLB_IMEI14.Clear();
-                                        this.IMEI_Start.Focus();
+                                        ClrearStartText();
                                         return;
                                     }
 
@@ -8544,6 +7596,10 @@ namespace WindowsForms_print
                         }
                         else
                         {
+                            //查重
+                            //if (1 == CheckField())
+                            //    return;
+
                             //更新关联表SIM（连带ICCID）//根据IMEI号更新SIM号与ICCID
                             if (this.UpdataSimByImei.Checked == true)
                             {
@@ -10264,5 +9320,175 @@ namespace WindowsForms_print
                 this.updata_inline.Visible = false;
             }
         }
+
+                                 
+
+
+        public int CheckField()
+        {
+            if(this.SIMStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- SIM 号
+                if(DRSB.CheckSIMBLL(this.SIMStart.Text))
+                {
+                    this.reminder.AppendText("关联表SIM -"+ this.SIMStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- SIM 号
+                if (PMB.CheckSIMBLL(this.SIMStart.Text))
+                {
+                    this.reminder.AppendText("打印表SIM -" + this.SIMStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+            if (this.VIPStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- VIP 号
+                if (DRSB.CheckVIPBLL(this.VIPStart.Text))
+                {
+                    this.reminder.AppendText("关联表VIP -" + this.VIPStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- VIP 号
+                if (PMB.CheckVIPBLL(this.VIPStart.Text))
+                {
+                    this.reminder.AppendText("打印表VIP -" + this.VIPStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+            if (this.BATStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- BAT 号
+                if(DRSB.CheckBATBLL(this.BATStart.Text))
+                {
+                    this.reminder.AppendText("关联表BAT -"+ this.BATStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- BAT 号
+                if (PMB.CheckBATBLL(this.BATStart.Text))
+                {
+                    this.reminder.AppendText("打印表BAT -" + this.BATStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+           
+            if (this.ICCIDStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- ICCID 号
+                if(DRSB.CheckICCIDBLL(this.ICCIDStart.Text))
+                {
+                    this.reminder.AppendText("关联表ICCID -"+ this.ICCIDStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- ICCID 号
+                if (PMB.CheckICCIDBLL(this.ICCIDStart.Text))
+                {
+                    this.reminder.AppendText("打印表ICCID -" + this.ICCIDStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+
+            if (this.MACStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- MAC 号
+                if(DRSB.CheckMACBLL(this.MACStart.Text))
+                {
+                    this.reminder.AppendText("关联表MAC -"+ this.MACStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- MAC 号
+                if (PMB.CheckMACBLL(this.MACStart.Text))
+                {
+                    
+                    this.reminder.AppendText("打印表MAC -" + this.MACStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+
+            if (this.EquipmentStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- Equipment 号
+                if (DRSB.CheckEquipmentBLL(this.EquipmentStart.Text))
+                {
+                    
+                    this.reminder.AppendText("关联表Equipment-" + this.EquipmentStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- Equipment 号
+                if (PMB.CheckEquipmentBLL(this.EquipmentStart.Text))
+                {
+                    
+                    this.reminder.AppendText("打印表Equipment -" + this.EquipmentStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+
+            if (this.RFIDStart.ReadOnly == false)
+            {
+                //查找关联表上的是否存在 -- RFID 号
+                if(DRSB.CheckRFIDBLL(this.RFIDStart.Text))
+                {
+                    
+                    this.reminder.AppendText("关联表RFID -"+ this.RFIDStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+
+                //查找打印表是否存在 -- RFID 号
+                if (PMB.CheckRFIDBLL(this.RFIDStart.Text))
+                {
+
+                    this.reminder.AppendText("打印表RFID -" + this.RFIDStart.Text + "重号\r\n");
+                    ClrearStartText();
+                    return 1;
+                }
+            }
+
+            return 0;
+
+        }
+
+
+        public void ClrearStartText()
+        {
+            this.IMEI_Start.Clear();
+            this.SIMStart.Clear();
+            this.VIPStart.Clear();
+            this.BATStart.Clear();
+            this.ICCIDStart.Clear();
+            this.MACStart.Clear();
+            this.EquipmentStart.Clear();
+            this.ShowSN.Clear();
+            this.GLB_SN.Clear();
+            this.RFIDStart.Clear();
+            this.GLB_IMEI14.Clear();
+            this.IMEI_Start.Focus();
+        }
     }
+
+
 }

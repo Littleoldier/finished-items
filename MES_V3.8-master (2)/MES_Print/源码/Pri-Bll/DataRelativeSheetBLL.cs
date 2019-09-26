@@ -73,6 +73,89 @@ namespace DataRelative.Param.BLL
             }
         }
 
+
+        public bool CheckVIPBLL(string SIMnumber)
+        {
+            if (DRSD.CheckVIPDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool CheckBATBLL(string SIMnumber)
+        {
+            if (DRSD.CheckBATDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool CheckICCIDBLL(string SIMnumber)
+        {
+            if (DRSD.CheckICCIDDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool CheckMACBLL(string SIMnumber)
+        {
+            if (DRSD.CheckMACDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool CheckEquipmentBLL(string SIMnumber)
+        {
+            if (DRSD.CheckEquipmentDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool CheckRFIDBLL(string SIMnumber)
+        {
+            if (DRSD.CheckRFIDDAL(SIMnumber) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public string CheckSIMByIMEIBLL(string IMEI)
         {
             return DRSD.CheckSIMByIMEIDAL(IMEI);
@@ -201,6 +284,18 @@ namespace DataRelative.Param.BLL
         public bool UpdateSNDAL(string IMEI, string SN)
         {
             if (DRSD.UpdateSNDAL(IMEI, SN) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateSN_RFIDDAL(string IMEI, string SN, string RFID)
+        {
+            if (DRSD.UpdateSN_RFIDDAL(IMEI, SN,RFID) > 0)
             {
                 return true;
             }

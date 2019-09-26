@@ -193,7 +193,133 @@ namespace DataRelative.Param.DAL
                     return 0;
                 }
             }
+        }       
+        
+        
+        //检查VIP号是否存在，存在返回1，否则返回0
+        public int CheckVIPDAL(string VIPnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI18 FROM dbo.DataRelativeSheet WHERE IMEI18='" + VIPnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+        }     
+        
+        
+        //检查BAT号是否存在，存在返回1，否则返回0
+        public int CheckBATDAL(string BATnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI9 FROM dbo.DataRelativeSheet WHERE IMEI9='" + BATnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+        }      
+        
+        
+        
+        //检查ICCID号是否存在，存在返回1，否则返回0
+        public int CheckICCIDDAL(string ICCIDnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI4 FROM dbo.DataRelativeSheet WHERE IMEI4='" + ICCIDnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+        }       
+        
+        
+        
+        //检查 MAC 号是否存在，存在返回1，否则返回0
+        public int CheckMACDAL(string MACnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI6 FROM dbo.DataRelativeSheet WHERE IMEI6='" + MACnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
         }
+
+
+
+        //检查 Equipment 号是否存在，存在返回1，否则返回0
+        public int CheckEquipmentDAL(string Equipmentnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI7 FROM dbo.DataRelativeSheet WHERE IMEI7='" + Equipmentnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+        }      
+        
+        
+        
+        //检查 RFID 号是否存在，存在返回1，否则返回0
+        public int CheckRFIDDAL(string RFIDnumber)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "SELECT IMEI13 FROM dbo.DataRelativeSheet WHERE IMEI13='" + RFIDnumber + "'";
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+        }
+
+
 
         //检查IMEI检查SIM号是否存在，存在返回SIM，否则返回“”
         public string CheckSIMByIMEIDAL(string IMEI)
@@ -492,6 +618,20 @@ namespace DataRelative.Param.DAL
                 using (SqlCommand command = conn1.CreateCommand())
                 {
                     command.CommandText = "UPDATE dbo.DataRelativeSheet SET  IMEI2='" + SN + "' WHERE IMEI1='" + IMEI + "'";
+                    return command.ExecuteNonQuery();
+                }
+            }
+        }
+                   
+        //更新SN
+        public int UpdateSN_RFIDDAL(string IMEI, string SN, string RFID)
+        {
+            using (SqlConnection conn1 = new SqlConnection(conStr))
+            {
+                conn1.Open();
+                using (SqlCommand command = conn1.CreateCommand())
+                {
+                    command.CommandText = "UPDATE dbo.DataRelativeSheet SET  IMEI2='" + SN + "', IMEI13='" + RFID + "' WHERE IMEI1='" + IMEI + "'";
                     return command.ExecuteNonQuery();
                 }
             }
